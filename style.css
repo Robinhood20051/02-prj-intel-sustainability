@@ -1,1 +1,222 @@
-/* Add your CSS here */
+/* This is where you add your CSS styles */
+
+/* Remove default margin and padding from the body to eliminate space at the top */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Stack main sections vertically */
+  min-height: 100vh; /* Ensure body takes full height */
+}
+
+header {
+  color: white; /* White text color */
+  padding: 20px; /* Padding around the header */
+  text-align: center; /* Center the text in the header */
+  width: 100%; /* Full width header */
+  top: 0; /* Position it at the top of the page */
+  left: 0; /* Align it to the left */
+  height: 90vh; /* Make header fill the entire viewport height */
+  display: flex; /* Use flex to center content vertically */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  position: relative; /* Needed for overlay */
+  background-image: url('img/Nature.jpg'); /* Set nature.jpg as background for the header */
+  background-size: cover; /* Cover the whole header area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  /* Add a slight overlay for readability if needed */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.25); /* Black with 25% opacity */
+  z-index: 0; /* Place behind header content */
+}
+
+/* Make sure header content appears above the overlay */
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.alegreya-sans-sc-regular {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Make all elements inside the header larger */
+header * {
+  font-size: 2em; /* Increase font size for all header elements */
+  margin-bottom: 16px; /* Add space below each element */
+}
+
+
+
+header .big-pop{
+  font-weight: 700; /* Bold font weight for the main heading */
+  color: #ffffff; /* White text color for contrast */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  text-align: center; /* Center the heading text */
+  padding-top: 1em;
+  
+
+  /*Apply the Alegreya Sans SC font with specific properties */
+  font-optical-sizing: auto; /* Enable optical sizing for better readability */
+  font-size: 4.5em; /* Make the main heading larger */
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 700; 
+  font-style: normal;
+  margin-top: 16px; /* Space above the heading */
+  margin-bottom: 24px; /* Space below the heading */
+
+  
+}
+
+
+
+
+/* Make paragraph text in header smaller for better readability */
+header p {
+  font-size: 1em; /* Smaller font size for paragraphs in header */
+  color: offwhite; /* Change paragraph text color to off-white */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  text-align: center; /* Center the paragraph text */
+  max-width: 80%; /* Limit width for better readability */
+  line-height: 1.5; /* Increase line height for better readability */
+  font-weight: 300; /* Lighter font weight for a softer look */ 
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 24px; /* Space above the paragraph */
+  margin-right: 25%;
+  margin-left: 25%; /* Add space on the left and right for better readability */
+  padding-bottom: 16px; /* Add space below the paragraph */
+
+  
+}
+
+
+/* Style the Intel logo image: remove blue background and center it */
+body img {
+  /* background-color: #5791c4;  Remove the blue background */
+  width: 25%; /* Set a fixed width for a smaller image */
+  height: auto; /* Keep the image aspect ratio */
+  margin: 0 auto; /* Center the image horizontally */
+  display: block; /* Needed for margin auto to work */
+  margin-top: 0; /* No space above the image */
+  margin-bottom: 32px; /* Add space below the image */
+}
+
+/* Example: Style all headings */
+h1, h2, h3 {
+  color: #2a4d69; /* Dark blue text */
+}
+
+/* Example: Add some space around paragraphs */
+p {
+  margin: 16px 0;
+}
+
+/* Make important words in the header paragraph stand out */
+.highlight {
+  color: #ffd700; /* Gold color to make the word pop */
+  font-weight: bold; /* Bold text */
+  background-color: #2a4d69; /* Optional: add a dark background for more contrast */
+  padding: 2px 6px; /* Small padding around the word */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Make the 'Sustainability Through the Ages' heading bigger and pop out */
+.big-pop {
+  font-size: 2.5em; /* Make the text much bigger */
+  color: #ffd700; /* Gold color for pop */
+  text-shadow: 2px 2px 8px #2a4d69; /* Add a shadow for extra pop */
+  font-weight: bold; /* Make it bold */
+  letter-spacing: 2px; /* Add space between letters */
+  margin-bottom: 20px; /* Add space below */
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Make the main layout mobile-first and stack elements vertically */
+body {
+  display: flex;
+  flex-direction: column; /* Stack main sections vertically */
+  min-height: 100vh; /* Ensure body takes full height */
+}
+
+/* Header styles remain mostly the same for mobile-first */
+header {
+  width: 100%;
+}
+
+/* Timeline Cards Section: Stack cards vertically on mobile */
+section {
+  display: flex;
+  flex-direction: column; /* Stack cards vertically by default */
+  align-items: center;    /* Center cards horizontally */
+  width: 100%;
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+/* Each timeline card */
+section > div {
+  width: 90%; /* Take most of the screen width on mobile */
+  max-width: 400px; /* Limit width for readability */
+  margin: 16px 0;
+  background: rgba(255,255,255,0.85); /* Slightly white background for readability */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Make images inside cards responsive */
+section > div img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* Responsive text for cards */
+section > div h2,
+section > div h3,
+section > div p {
+  margin: 8px 0;
+  text-align: center;
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 700px) {
+  section {
+    flex-direction: row; /* Arrange cards in a row on larger screens */
+    flex-wrap: wrap;     /* Allow wrapping to next line */
+    justify-content: center;
+    align-items: flex-start;
+  }
+  section > div {
+    margin: 16px;
+    width: 300px; /* Slightly smaller width for more cards per row */
+  }
+}
+
+/* You can add more styles below */
+
