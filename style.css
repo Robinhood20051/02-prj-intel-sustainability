@@ -7,6 +7,9 @@ body {
   display: flex;
   flex-direction: column; /* Stack main sections vertically */
   min-height: 100vh; /* Ensure body takes full height */
+  width: 100vw; /* Ensure body is full width */
+  box-sizing: border-box;
+  background-color: rgb(36, 34, 34);
 }
 
 /* Header section with background image and overlay for readability */
@@ -145,8 +148,6 @@ p {
 /* Special style for the main heading */
 .big-pop {
   font-size: 2.5em; /* Make the text much bigger */
-  color: #ffd700; /* Gold color for pop */
-  text-shadow: 2px 2px 8px #2a4d69; /* Add a shadow for extra pop */
   font-weight: bold; /* Make it bold */
   letter-spacing: 2px; /* Add space between letters */
   margin-bottom: 20px; /* Add space below */
@@ -165,89 +166,98 @@ body {
   min-height: 100vh;
 }
 
-/* Timeline section: horizontal scroll with flexbox, cards stretch to same height */
+/* Timeline section: use Intel blue colors */
 section {
-  background: rgb(119, 194, 244);
+  background: linear-gradient(120deg, #e6f0fa 0%, #d0e6fa 100%); /* Light Intel blue gradient */
   display: flex;
   flex-direction: row;
   align-items: stretch;
   width: 100%;
   overflow-x: auto;
-  gap: 2em; /* 32px -> 2em */
-  padding: 2.5em 0; /* 40px -> 2.5em */
+  gap: 2em;
+  padding: 3em 2vw 3em 2vw;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  border-top-left-radius: 2em;
+  border-top-right-radius: 2em;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.10);
 }
 
-/* Each timeline card */
+/* Each timeline card: Intel blue accent */
 section > div {
-  flex: 0 0 23.75em; /* 380px -> 23.75em */
-  max-width: 59.375em; /* 950px (95vw on 1000px screen) -> 59.375em */
-  min-width: 17.5em; /* 280px -> 17.5em */
-  min-height: 21.25em; /* 340px -> 21.25em */
-  border-radius: 0.625em; /* 10px -> 0.625em */
-  box-shadow: 0 0.125em 0.5em rgba(0,0,0,0.08); /* 2px 8px -> 0.125em 0.5em */
-  padding: 1.75em; /* 28px -> 1.75em */
+  flex: 0 0 23.75em;
+  max-width: 59.375em;
+  min-width: 17.5em;
+  min-height: 21.25em;
+  border-radius: 1em;
+  box-shadow: 0 0.5em 2em rgba(0,0,0,0.10);
+  padding: 2em 1.5em;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  position: relative;
-  transition: transform 0.2s;
+  background: #ffffff; /* White card background */
+  font-size: 1.15em;
+  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  background: rgb(61, 59, 59);
-  font-size: 1.3em;
+  border: 1.5px solid #0068b5; /* Intel blue border */
 }
 
-/* Simple hover effect to lift the card */
+/* Card hover effect: subtle lift and strong Intel blue border */
 section > div:hover {
-  transform: translateY(-0.5em) scale(1.03); /* 8px -> 0.5em */
-  box-shadow: 0 0.375em 1em rgba(0,0,0,0.15); /* 6px 16px -> 0.375em 1em */
+  transform: translateY(-0.5em) scale(1.03);
+  box-shadow: 0 1em 2.5em rgba(0,104,181,0.18); /* Intel blue shadow */
+  border: 2.5px solid #0068b5;
 }
 
-/* Hide the paragraph by default */
+/* Hide the paragraph by default, reveal on hover */
 section > div p {
   opacity: 0;
-  max-height: 7.5em; /* 120px -> 7.5em */
+  max-height: 7.5em;
   overflow: hidden;
   transition: opacity 0.3s, max-height 0.3s;
   margin: 0;
   padding: 0;
-  min-height: 3em; /* 48px -> 3em */
+  min-height: 3em;
   box-sizing: border-box;
 }
+section > div:hover p {
+  opacity: 1;
+  max-height: 13.75em;
+  margin: 0.5em 0;
+  padding: 0.5em 0 0 0;
+}
 
-section p{
+/* Card paragraph font and color */
+section p {
   font-family: "Source Code Pro", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #ffffff; /* White text for better contrast */
-}
-/* Reveal the paragraph on card hover */
-section > div:hover p {
-  opacity: 1;
-  max-height: 13.75em; /* 220px -> 13.75em */
-  margin: 0.5em 0; /* 8px -> 0.5em */
-  padding: 0.5em 0 0 0; /* 8px -> 0.5em */
+  color: #003366; /* Deep Intel blue for readability */
 }
 
-/* Make images inside cards bigger and responsive */
+/* Card images: blue shadow and rounded corners */
 section > div img {
   width: 100%;
-  height: 13.75em; /* 220px -> 13.75em */
+  height: 13.75em;
   object-fit: cover;
-  border-radius: 0.375em; /* 6px -> 0.375em */
-  margin-bottom: 1em; /* 16px -> 1em */
+  border-radius: 0.75em;
+  margin-bottom: 1em;
+  box-shadow: 0 0.25em 1em rgba(0,104,181,0.10); /* Intel blue shadow */
+  background: #e6f0fa;
 }
 
-/* Responsive text for cards: make headings bigger */
+/* Card headings: Intel blue accent */
 section > div h2,
 section > div h3 {
-  margin: 0.75em 0; /* 12px -> 0.75em */
+  margin: 0.75em 0 0.25em 0;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.5em;
+  font-family: "Alegreya Sans SC", sans-serif;
+  color: #0068b5; /* Intel blue */
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 /* Responsive: stack cards vertically on small screens and shrink header text */
@@ -255,16 +265,17 @@ section > div h3 {
   section {
     flex-direction: column;
     align-items: center;
-    gap: 1.25em; /* 20px -> 1.25em */
-    padding: 1.25em 0; /* 20px -> 1.25em */
+    gap: 1.25em;
+    padding: 1.25em 0.5em;
     overflow-x: visible;
+    border-radius: 0;
   }
   section > div {
     width: 95vw;
-    min-width: 13.75em; /* 220px -> 13.75em */
+    min-width: 13.75em;
     max-width: 98vw;
     margin: 0 auto;
-    padding: 1.125em; /* 18px -> 1.125em */
+    padding: 1.125em;
   }
   header * {
     font-size: 1em;
@@ -287,12 +298,11 @@ section > div h3 {
 /* Medium screens: shrink header text if needed */
 @media (max-width: 900px) {
   header {
-    /* Flexbox keeps content centered and allows shrinking */
     height: 60vh;
     padding: 10px;
   }
   header * {
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin-bottom: 10px;
   }
   header .big-pop {
@@ -308,4 +318,20 @@ section > div h3 {
     padding-bottom: 8px;
   }
 }
+
+/* Style for the scroll instruction at the bottom */
+.scroll-instruction {
+  background: #0068b5;   /* Intel blue */
+  color: #ffffff;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  text-align: center;
+  width: fit-content;
+  margin: 1em auto;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,104,181,0.10);
+}
+
+
 
