@@ -9,6 +9,7 @@ body {
   min-height: 100vh; /* Ensure body takes full height */
 }
 
+/* Header section with background image and overlay for readability */
 header {
   color: white; /* White text color */
   padding: 20px; /* Padding around the header */
@@ -26,16 +27,14 @@ header {
   background-size: cover; /* Cover the whole header area */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Do not repeat the image */
-  /* Add a slight overlay for readability if needed */
 }
 
+/* Overlay to dim the header background */
 header::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.25); /* Black with 25% opacity */
   z-index: 0; /* Place behind header content */
 }
@@ -52,14 +51,22 @@ header > * {
   font-style: normal;
 }
 
+/* Container for logo and header text for better layout on small screens */
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1em; /* Space between logo and text */
+}
+
 /* Make all elements inside the header larger */
 header * {
   font-size: 2em; /* Increase font size for all header elements */
   margin-bottom: 16px; /* Add space below each element */
 }
 
-
-
+/* Main heading style */
 header .big-pop{
   font-weight: 700; /* Bold font weight for the main heading */
   color: #ffffff; /* White text color for contrast */
@@ -80,9 +87,6 @@ header .big-pop{
 
   
 }
-
-
-
 
 /* Make paragraph text in header smaller for better readability */
 header p {
@@ -107,16 +111,7 @@ header p {
 }
 
 
-/* Container for logo and header text for better layout on small screens */
-.header-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 1em; /* Space between logo and text */
-}
-
-/* Style the Intel logo image responsively */
+/* Responsive Intel logo image */
 body img {
   /* background-color: #5791c4;  Remove the blue background */
   width: 18em; /* Use em for responsive width */
@@ -147,7 +142,7 @@ p {
   border-radius: 4px; /* Rounded corners */
 }
 
-/* Make the 'Sustainability Through the Ages' heading bigger and pop out */
+/* Special style for the main heading */
 .big-pop {
   font-size: 2.5em; /* Make the text much bigger */
   color: #ffd700; /* Gold color for pop */
@@ -161,19 +156,16 @@ p {
   font-style: normal;
 }
 
-/* Make the main layout mobile-first and stack elements vertically */
+/* Main page layout: remove default spacing and stack sections vertically */
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column; /* Stack main sections vertically */
-  min-height: 100vh; /* Ensure body takes full height */
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Header styles remain mostly the same for mobile-first */
-header {
-  width: 100%;
-}
-
-/* Timeline Cards Section: Horizontal scroll for cards, stack vertically if not enough space */
+/* Timeline section: horizontal scroll with flexbox, cards stretch to same height */
 section {
   background: rgb(119, 194, 244);
   display: flex;
@@ -258,7 +250,7 @@ section > div h3 {
   font-size: 1.4em;
 }
 
-/* For small screens: stack cards vertically */
+/* Responsive: stack cards vertically on small screens and shrink header text */
 @media (max-width: 700px) {
   section {
     flex-direction: column;
@@ -273,6 +265,47 @@ section > div h3 {
     max-width: 98vw;
     margin: 0 auto;
     padding: 1.125em; /* 18px -> 1.125em */
+  }
+  header * {
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+  header .big-pop {
+    font-size: 1.2em;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-top: 0.2em;
+  }
+  header p {
+    font-size: 0.85em;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding-bottom: 4px;
+  }
+}
+
+/* Medium screens: shrink header text if needed */
+@media (max-width: 900px) {
+  header {
+    /* Flexbox keeps content centered and allows shrinking */
+    height: 60vh;
+    padding: 10px;
+  }
+  header * {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  header .big-pop {
+    font-size: 2em;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding-top: 0.5em;
+  }
+  header p {
+    font-size: 0.95em;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-bottom: 8px;
   }
 }
 
