@@ -1,179 +1,135 @@
 /* This is where you add your CSS styles */
 
-/* Remove default margin and padding from the body to eliminate space at the top */
+/* Body: remove default spacing, use flexbox to stack sections vertically */
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column; /* Stack main sections vertically */
-  min-height: 100vh; /* Ensure body takes full height */
-  width: 100vw; /* Ensure body is full width */
+  display: flex;              /* Use flexbox for layout */
+  flex-direction: column;     /* Stack sections vertically */
+  min-height: 100vh;          /* Full page height */
+  width: 100vw;               /* Full page width */
   box-sizing: border-box;
-  background-color: rgb(36, 34, 34);
+  background-color: #242222;  /* Dark background for contrast */
 }
 
-/* Header section with background image and overlay for readability */
+/* Header: large hero section with background image and flexbox centering */
 header {
-  color: white; /* White text color */
-  padding: 20px; /* Padding around the header */
-  text-align: center; /* Center the text in the header */
-  width: 100%; /* Full width header */
-  top: 0; /* Position it at the top of the page */
-  left: 0; /* Align it to the left */
-  height: 90vh; /* Make header fill the entire viewport height */
-  display: flex; /* Use flex to center content vertically */
-  flex-direction: column; /* Stack elements vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  position: relative; /* Needed for overlay */
-  background-image: url('img/Nature.jpg'); /* Set nature.jpg as background for the header */
-  background-size: cover; /* Cover the whole header area */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  height: 90vh;
+  display: flex;              /* Flexbox for vertical centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('img/Nature.jpg'); /* Background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Overlay to dim the header background */
+/* Overlay to dim the header background for readability */
 header::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.25); /* Black with 25% opacity */
-  z-index: 0; /* Place behind header content */
+  background: rgba(0,0,0,0.25);
+  z-index: 0;
 }
 
-/* Make sure header content appears above the overlay */
+/* Make header content appear above the overlay */
 header > * {
   position: relative;
   z-index: 1;
 }
 
-.alegreya-sans-sc-regular {
-  font-family: "Alegreya Sans SC", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Container for logo and header text for better layout on small screens */
+/* Header content: stack logo and text vertically */
 .header-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 1em; /* Space between logo and text */
+  gap: 1em;
 }
 
-/* Make all elements inside the header larger */
+/* Make all header elements larger and spaced out */
 header * {
-  font-size: 2em; /* Increase font size for all header elements */
-  margin-bottom: 16px; /* Add space below each element */
+  font-size: 2em;
+  margin-bottom: 16px;
 }
 
-/* Main heading style */
-header .big-pop{
-  font-weight: 700; /* Bold font weight for the main heading */
-  color: #ffffff; /* White text color for contrast */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  text-align: center; /* Center the heading text */
+/* Main heading style (optional class for special headings) */
+header .big-pop {
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
   padding-top: 1em;
-  
-
-  /*Apply the Alegreya Sans SC font with specific properties */
-  font-optical-sizing: auto; /* Enable optical sizing for better readability */
-  font-size: 4.5em; /* Make the main heading larger */
+  font-size: 4.5em;
   font-family: "Alegreya Sans SC", sans-serif;
-  font-weight: 700; 
-  font-style: normal;
-  margin-top: 16px; /* Space above the heading */
-  margin-bottom: 24px; /* Space below the heading */
-
-  
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 
-/* Make paragraph text in header smaller for better readability */
+/* Header paragraph style */
 header p {
-  font-size: 1em; /* Smaller font size for paragraphs in header */
-  color: offwhite; /* Change paragraph text color to off-white */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  text-align: center; /* Center the paragraph text */
-  max-width: 80%; /* Limit width for better readability */
-  line-height: 1.5; /* Increase line height for better readability */
-  font-weight: 300; /* Lighter font weight for a softer look */ 
+  font-size: 1em;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.5;
+  font-weight: 300;
   font-family: "Source Code Pro", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  margin-top: 24px; /* Space above the paragraph */
+  margin-top: 24px;
   margin-right: 25%;
-  margin-left: 25%; /* Add space on the left and right for better readability */
-  padding-bottom: 16px; /* Add space below the paragraph */
-
-  
+  margin-left: 25%;
+  padding-bottom: 16px;
 }
-
 
 /* Responsive Intel logo image */
 body img {
-  /* background-color: #5791c4;  Remove the blue background */
-  width: 18em; /* Use em for responsive width */
-  max-width: 80vw; /* Prevent image from overflowing on small screens */
+  width: 18em;
+  max-width: 80vw;
   min-width: 6em;
-  height: auto; /* Keep the image aspect ratio */
-  margin: 0 auto; /* Center the image horizontally */
-  display: block; /* Needed for margin auto to work */
-  margin-top: 0; /* No space above the image */
-  margin-bottom: 32px; /* Add space below the image */
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  margin-top: 0;
+  margin-bottom: 32px;
 }
 
-/* Example: Style all headings */
+/* Headings color for all sections */
 h1, h2, h3 {
-  color: #2a4d69; /* Dark blue text */
+  color: #2a4d69;
 }
 
-/* Example: Add some space around paragraphs */
+/* Add space around all paragraphs */
 p {
   margin: 16px 0;
 }
 
-/* Make important words in the header paragraph stand out */
+/* Highlight important words in header paragraph */
 .highlight {
-  color: #00a2ff; /* Gold color to make the word pop */
-  font-weight: bold; /* Bold text */
-  padding: 2px 6px; /* Small padding around the word */
-  border-radius: 4px; /* Rounded corners */
+  color: #00a2ff;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-/* Special style for the main heading */
-.big-pop {
-  font-size: 2.5em; /* Make the text much bigger */
-  font-weight: bold; /* Make it bold */
-  letter-spacing: 2px; /* Add space between letters */
-  margin-bottom: 20px; /* Add space below */
-  font-family: "Source Code Pro", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Main page layout: remove default spacing and stack sections vertically */
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Timeline section: use Intel blue colors */
+/* Timeline section: horizontal scroll with flexbox, cards stretch to same height */
 section {
   background: linear-gradient(120deg, #e6f0fa 0%, #d0e6fa 100%); /* Light Intel blue gradient */
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: row;         /* Cards in a row */
+  align-items: stretch;        /* Cards same height */
   width: 100%;
-  overflow-x: auto;
+  overflow-x: auto;            /* Horizontal scroll */
   gap: 2em;
   padding: 3em 2vw 3em 2vw;
   box-sizing: border-box;
@@ -183,7 +139,7 @@ section {
   box-shadow: 0 -4px 24px rgba(0,0,0,0.10);
 }
 
-/* Each timeline card: Intel blue accent */
+/* Each timeline card: modern, clean look */
 section > div {
   flex: 0 0 23.75em;
   max-width: 59.375em;
@@ -196,17 +152,17 @@ section > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #ffffff; /* White card background */
+  background: #fff;
   font-size: 1.15em;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  border: 1.5px solid #0068b5; /* Intel blue border */
+  border: 1.5px solid #0068b5;
 }
 
 /* Card hover effect: subtle lift and strong Intel blue border */
 section > div:hover {
   transform: translateY(-0.5em) scale(1.03);
-  box-shadow: 0 1em 2.5em rgba(0,104,181,0.18); /* Intel blue shadow */
+  box-shadow: 0 1em 2.5em rgba(0,104,181,0.18);
   border: 2.5px solid #0068b5;
 }
 
@@ -234,7 +190,7 @@ section p {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #003366; /* Deep Intel blue for readability */
+  color: #003366;
 }
 
 /* Card images: blue shadow and rounded corners */
@@ -244,7 +200,7 @@ section > div img {
   object-fit: cover;
   border-radius: 0.75em;
   margin-bottom: 1em;
-  box-shadow: 0 0.25em 1em rgba(0,104,181,0.10); /* Intel blue shadow */
+  box-shadow: 0 0.25em 1em rgba(0,104,181,0.10);
   background: #e6f0fa;
 }
 
@@ -255,7 +211,7 @@ section > div h3 {
   text-align: center;
   font-size: 1.5em;
   font-family: "Alegreya Sans SC", sans-serif;
-  color: #0068b5; /* Intel blue */
+  color: #0068b5;
   letter-spacing: 1px;
   font-weight: 700;
 }
@@ -321,7 +277,7 @@ section > div h3 {
 
 /* Style for the scroll instruction at the bottom */
 .scroll-instruction {
-  background: #0068b5;   /* Intel blue */
+  background: #0068b5;
   color: #ffffff;
   padding: 0.5em 1em;
   border-radius: 0.5em;
