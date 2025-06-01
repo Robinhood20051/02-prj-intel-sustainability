@@ -107,10 +107,21 @@ header p {
 }
 
 
-/* Style the Intel logo image: remove blue background and center it */
+/* Container for logo and header text for better layout on small screens */
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1em; /* Space between logo and text */
+}
+
+/* Style the Intel logo image responsively */
 body img {
   /* background-color: #5791c4;  Remove the blue background */
-  width: 25%; /* Set a fixed width for a smaller image */
+  width: 18em; /* Use em for responsive width */
+  max-width: 80vw; /* Prevent image from overflowing on small screens */
+  min-width: 6em;
   height: auto; /* Keep the image aspect ratio */
   margin: 0 auto; /* Center the image horizontally */
   display: block; /* Needed for margin auto to work */
@@ -130,9 +141,8 @@ p {
 
 /* Make important words in the header paragraph stand out */
 .highlight {
-  color: #ffd700; /* Gold color to make the word pop */
+  color: #00a2ff; /* Gold color to make the word pop */
   font-weight: bold; /* Bold text */
-  background-color: #2a4d69; /* Optional: add a dark background for more contrast */
   padding: 2px 6px; /* Small padding around the word */
   border-radius: 4px; /* Rounded corners */
 }
@@ -163,60 +173,106 @@ header {
   width: 100%;
 }
 
-/* Timeline Cards Section: Stack cards vertically on mobile */
+/* Timeline Cards Section: Horizontal scroll for cards, stack vertically if not enough space */
 section {
+  background: rgb(119, 194, 244);
   display: flex;
-  flex-direction: column; /* Stack cards vertically by default */
-  align-items: center;    /* Center cards horizontally */
+  flex-direction: row;
+  align-items: stretch;
   width: 100%;
-  padding: 16px 0;
+  overflow-x: auto;
+  gap: 2em; /* 32px -> 2em */
+  padding: 2.5em 0; /* 40px -> 2.5em */
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 /* Each timeline card */
 section > div {
-  width: 90%; /* Take most of the screen width on mobile */
-  max-width: 400px; /* Limit width for readability */
-  margin: 16px 0;
-  background: rgba(255,255,255,0.85); /* Slightly white background for readability */
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 16px;
+  flex: 0 0 23.75em; /* 380px -> 23.75em */
+  max-width: 59.375em; /* 950px (95vw on 1000px screen) -> 59.375em */
+  min-width: 17.5em; /* 280px -> 17.5em */
+  min-height: 21.25em; /* 340px -> 21.25em */
+  border-radius: 0.625em; /* 10px -> 0.625em */
+  box-shadow: 0 0.125em 0.5em rgba(0,0,0,0.08); /* 2px 8px -> 0.125em 0.5em */
+  padding: 1.75em; /* 28px -> 1.75em */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  position: relative;
+  transition: transform 0.2s;
+  cursor: pointer;
+  background: rgb(61, 59, 59);
+  font-size: 1.3em;
 }
 
-/* Make images inside cards responsive */
+/* Simple hover effect to lift the card */
+section > div:hover {
+  transform: translateY(-0.5em) scale(1.03); /* 8px -> 0.5em */
+  box-shadow: 0 0.375em 1em rgba(0,0,0,0.15); /* 6px 16px -> 0.375em 1em */
+}
+
+/* Hide the paragraph by default */
+section > div p {
+  opacity: 0;
+  max-height: 7.5em; /* 120px -> 7.5em */
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.3s;
+  margin: 0;
+  padding: 0;
+  min-height: 3em; /* 48px -> 3em */
+  box-sizing: border-box;
+}
+
+section p{
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff; /* White text for better contrast */
+}
+/* Reveal the paragraph on card hover */
+section > div:hover p {
+  opacity: 1;
+  max-height: 13.75em; /* 220px -> 13.75em */
+  margin: 0.5em 0; /* 8px -> 0.5em */
+  padding: 0.5em 0 0 0; /* 8px -> 0.5em */
+}
+
+/* Make images inside cards bigger and responsive */
 section > div img {
   width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 12px;
+  height: 13.75em; /* 220px -> 13.75em */
+  object-fit: cover;
+  border-radius: 0.375em; /* 6px -> 0.375em */
+  margin-bottom: 1em; /* 16px -> 1em */
 }
 
-/* Responsive text for cards */
+/* Responsive text for cards: make headings bigger */
 section > div h2,
-section > div h3,
-section > div p {
-  margin: 8px 0;
+section > div h3 {
+  margin: 0.75em 0; /* 12px -> 0.75em */
   text-align: center;
+  font-size: 1.4em;
 }
 
-/* Responsive adjustments for larger screens */
-@media (min-width: 700px) {
+/* For small screens: stack cards vertically */
+@media (max-width: 700px) {
   section {
-    flex-direction: row; /* Arrange cards in a row on larger screens */
-    flex-wrap: wrap;     /* Allow wrapping to next line */
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25em; /* 20px -> 1.25em */
+    padding: 1.25em 0; /* 20px -> 1.25em */
+    overflow-x: visible;
   }
   section > div {
-    margin: 16px;
-    width: 300px; /* Slightly smaller width for more cards per row */
+    width: 95vw;
+    min-width: 13.75em; /* 220px -> 13.75em */
+    max-width: 98vw;
+    margin: 0 auto;
+    padding: 1.125em; /* 18px -> 1.125em */
   }
 }
-
-/* You can add more styles below */
 
